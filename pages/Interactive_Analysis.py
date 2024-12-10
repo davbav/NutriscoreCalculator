@@ -102,7 +102,7 @@ bar_data["Color"] = [
 
 # Create Altair Bar Chart
 bar_chart = alt.Chart(bar_data).mark_bar().encode(
-    x=alt.X("Input:O", sort=None, title="Input Type"),
+    x=alt.X("Input:O", sort=None, title="Input macros"),
     y=alt.Y("Points:Q", title="Points"),
     color=alt.Color("Color:N", scale=None, legend=None),
     tooltip=["Input", "Points"]
