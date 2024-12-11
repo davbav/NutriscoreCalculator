@@ -28,13 +28,13 @@ st.markdown("Adjust the sliders to see how points and total Nutri-Score change d
 algorithm = st.sidebar.radio("Select Algorithm Version", ["2017 (Original)", "2023 (Updated)"])
 
 # Default Input Values
-energy = st.sidebar.number_input("Energy (kJ)", min_value=0.0, step=20, value=530.0)
+energy = st.sidebar.number_input("Energy (kJ)", min_value=0.0, step=20.0, value=530.0)
 saturated_fat = st.sidebar.number_input("Saturated Fat (g)", min_value=0.0, step=0.2, value=0.6)
-sugars = st.sidebar.number_input("Sugars (g)", min_value=0.0, step=2, value=2.8)
+sugars = st.sidebar.number_input("Sugars (g)", min_value=0.0, step=2.0, value=2.8)
 salt = st.sidebar.number_input("Salt (g)", min_value=0.0, step=0.1, value=0.65)
 fiber = st.sidebar.number_input("Fiber (g)", min_value=0.0, step=0.4, value=1.1)
 protein = st.sidebar.number_input("Protein (g)", min_value=0.0, step=0.4, value=4.8)
-fruits_veg = st.sidebar.number_input("Fruits, Vegetables, Legumes (%)", min_value=0.0, max_value=100.0, step=5.0, value=39)
+fruits_veg = st.sidebar.number_input("Fruits, Vegetables, Legumes (%)", min_value=0.0, max_value=100.0, step=5.0, value=39.0)
 
 # MArking scheme Functions
 def score_to_letter_and_color2017(score):

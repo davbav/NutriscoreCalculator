@@ -28,13 +28,13 @@ algorithm = st.sidebar.radio("Select Algorithm Version", ["2017 (Original)", "20
 
 # macros Input Section
 st.header("Enter Nutritional Information (per 100g)")
-energy = st.number_input("Energy (kJ)", min_value=0.0, step=20)
+energy = st.number_input("Energy (kJ)", min_value=0.0, step=20.0)
 saturated_fat = st.number_input("Saturated Fat (g)", min_value=0.0, step=0.2)
 st.markdown(
     '<p style="color:gray;font-size:small;">Important: Not total fats, SATURATED!.</p>', 
     unsafe_allow_html=True
 )
-sugars = st.number_input("Sugars (g)", min_value=0.0, step=2)
+sugars = st.number_input("Sugars (g)", min_value=0.0, step=2.0)
 st.markdown(
     '<p style="color:gray;font-size:small;">Important: Only pure sugars, not total carbs.</p>', 
     unsafe_allow_html=True
