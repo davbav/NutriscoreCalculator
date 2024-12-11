@@ -22,6 +22,10 @@ from data import (
 
 # Page Title
 st.title("Nutri-Score Calculator")
+st.markdown(
+    '<p style="color:gray;font-size:small;">Only for "General foods".</p>', 
+    unsafe_allow_html=True
+)
 
 # Sidebar for Algorithm Selection
 algorithm = st.sidebar.radio("Select Algorithm Version", ["2017 (Original)", "2023 (Updated)"])
