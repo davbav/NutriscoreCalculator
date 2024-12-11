@@ -40,16 +40,18 @@ def saturated_fat_points_2023(saturated_fat):
     return 0 if saturated_fat <= 1 else 1 if saturated_fat <= 2 else 2 if saturated_fat <= 3 else 3 if saturated_fat <= 4 else 4 if saturated_fat <= 5 else 5 if saturated_fat <= 6 else 6 if saturated_fat <= 7 else 7 if saturated_fat <= 8 else 8 if saturated_fat <= 9 else 9 if saturated_fat <= 10 else 10
 
 def sugar_points_2023(sugars):
-    return 0 if sugars <= 3.4 else 1 if sugars <= 6.8 else 2 if sugars <= 10 else 3 if sugars <= 14 else 4 if sugars <= 17 else 5 if sugars <= 20 else 6 if sugars <= 24 else 7 if sugars <= 27 else 8 if sugars <= 31 else 9 if sugars <= 34 else 10
+   return 0 if sugars <= 3.4 else 1 if sugars <= 6.8 else 2 if sugars <= 10 else 3 if sugars <= 14 else 4 if sugars <= 17 else 5 if sugars <= 20 else 6 if sugars <= 24 else 7 if sugars <= 27 else 8 if sugars <= 31 else 9 if sugars <= 34 else 10 if sugars <= 37 else 11 if sugars <= 41 else 12 if sugars <= 44 else 13 if sugars <= 48 else 14 if sugars <= 51 else 15
+
 
 def salt_points_2023(salt):
-    return 0 if salt <= 0.2 else 1 if salt <= 0.4 else 2 if salt <= 0.6 else 3 if salt <= 0.8 else 4 if salt <= 1.0 else 5 if salt <= 1.2 else 6 if salt <= 1.4 else 7 if salt <= 1.6 else 8 if salt <= 1.8 else 9 if salt <= 2.0 else 10
+    return 0 if salt <= 0.2 else 1 if salt <= 0.4 else 2 if salt <= 0.6 else 3 if salt <= 0.8 else 4 if salt <= 1.0 else 5 if salt <= 1.2 else 6 if salt <= 1.4 else 7 if salt <= 1.6 else 8 if salt <= 1.8 else 9 if salt <= 2.0 else 10 if salt <= 2.2 else 11 if salt <= 2.4 else 12 if salt <= 2.6 else 13 if salt <= 2.8 else 14 if salt <= 3.0 else 15 if salt <= 3.2 else 16 if salt <= 3.4 else 17 if salt <= 3.6 else 18 if salt <= 3.8 else 19 if salt <= 4.0 else 20
+
 
 def fiber_points_2023(fiber):
     return 0 if fiber <= 3.0 else 1 if fiber <= 4.1 else 2 if fiber <= 5.2 else 3 if fiber <= 6.3 else 4 if fiber <= 7.4 else 5
 
 def protein_points_2023(protein):
-    return 0 if protein <= 2.4 else 1 if protein <= 4.8 else 2 if protein <= 7.2 else 3 if protein <= 9.6 else 4 if protein <= 12 else 5
+    return 0 if protein <= 2.4 else 1 if protein <= 4.8 else 2 if protein <= 7.2 else 3 if protein <= 9.6 else 4 if protein <= 12 else 5 if protein <= 14 else 6 if protein <= 17 else 7
 
 def fruits_veg_points_2023(fruits_veg):
     return 0 if fruits_veg < 40 else 1 if fruits_veg <= 60 else 2 if fruits_veg <= 80 else 5
