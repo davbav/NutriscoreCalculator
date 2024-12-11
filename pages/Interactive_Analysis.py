@@ -1,6 +1,6 @@
 import streamlit as st
-import pandas as pd
-import altair as alt
+import pandas as pd #this is for graphs
+import altair as alt #this is for graphs
 from algorithms.nutriscore_2017 import nutriscore_2017_Master
 from algorithms.nutriscore_2023 import nutriscore_2023_Master
 from data import (
@@ -28,15 +28,15 @@ st.markdown("Adjust the sliders to see how points and total Nutri-Score change d
 algorithm = st.sidebar.radio("Select Algorithm Version", ["2017 (Original)", "2023 (Updated)"])
 
 # Default Input Values
-energy = st.sidebar.number_input("Energy (kJ)", min_value=0.0, step=0.1, value=500.0)
-saturated_fat = st.sidebar.number_input("Saturated Fat (g)", min_value=0.0, step=0.1, value=3.0)
-sugars = st.sidebar.number_input("Sugars (g)", min_value=0.0, step=0.1, value=10.0)
-salt = st.sidebar.number_input("Salt (g)", min_value=0.0, step=0.1, value=1.0)
-fiber = st.sidebar.number_input("Fiber (g)", min_value=0.0, step=0.1, value=2.0)
-protein = st.sidebar.number_input("Protein (g)", min_value=0.0, step=0.1, value=5.0)
-fruits_veg = st.sidebar.number_input("Fruits, Vegetables, Legumes (%)", min_value=0.0, max_value=100.0, step=1.0, value=50.0)
+energy = st.sidebar.number_input("Energy (kJ)", min_value=0.0, step=20, value=530.0)
+saturated_fat = st.sidebar.number_input("Saturated Fat (g)", min_value=0.0, step=0.2, value=0.6)
+sugars = st.sidebar.number_input("Sugars (g)", min_value=0.0, step=2, value=2.8)
+salt = st.sidebar.number_input("Salt (g)", min_value=0.0, step=0.1, value=0.65)
+fiber = st.sidebar.number_input("Fiber (g)", min_value=0.0, step=0.4, value=1.1)
+protein = st.sidebar.number_input("Protein (g)", min_value=0.0, step=0.4, value=4.8)
+fruits_veg = st.sidebar.number_input("Fruits, Vegetables, Legumes (%)", min_value=0.0, max_value=100.0, step=5.0, value=39)
 
-# Helper Functions
+# MArking scheme Functions
 def score_to_letter_and_color2017(score):
     if score <= -1:
         return "A", "green"
@@ -61,7 +61,7 @@ def score_to_letter_and_color2023(score):
     else:
         return "E", "red"
 
-# Calculate Points and Nutri-Score
+# Calculate Points and Nutri-Score - the same calculation that is done in algorithms for the calculator on the first page. Just done in a different way referencing the data.py rather than directly calculating the points. gets the same result tho.
 if algorithm == "2017 (Original)":
     sodium = salt / 2.5 * 1000
     points = [
@@ -73,7 +73,7 @@ if algorithm == "2017 (Original)":
         -protein_points(protein),
         -fruits_veg_points(fruits_veg),
     ]
-    score = nutriscore_2017_Master(energy, saturated_fat, sugars, sodium, fiber, protein, fruits_veg)
+    score = nutriscore_2017_Master(energy, saturated_fat, sugars, sodium, fiber, protein, fruits_veg) 
     letter, color = score_to_letter_and_color2017(score)
 
 elif algorithm == "2023 (Updated)":
@@ -95,12 +95,12 @@ bar_data = pd.DataFrame({
     "Input": input_labels,
     "Points": points,
 })
-bar_data["Color"] = [
+bar_data["Color"] = [ #diffferenciate the positive and negative points by color
     "red" if label in ["Energy", "Saturated Fat", "Sugars", "Salt"] else "green"
     for label in bar_data["Input"]
 ]
 
-# Create Altair Bar Chart
+# Create Altair Bar Chart - the one imported at the begining 
 bar_chart = alt.Chart(bar_data).mark_bar().encode(
     x=alt.X("Input:O", sort=None, title="Input macros"),
     y=alt.Y("Points:Q", title="Points"),
@@ -131,7 +131,7 @@ variable = st.selectbox(
     ["Energy", "Saturated Fat", "Sugars", "Salt", "Fiber", "Protein", "Fruits/Veg"]
 )
 
-# Define a range for the selected variable
+# Define a range for the selected variable so the graph won't look crazy
 ranges = {
     "Energy": range(0, 3001, 100),
     "Saturated Fat": [round(x * 0.1, 1) for x in range(0, 51)],

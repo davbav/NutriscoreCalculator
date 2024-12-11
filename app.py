@@ -26,15 +26,15 @@ st.title("Nutri-Score Calculator")
 # Sidebar for Algorithm Selection
 algorithm = st.sidebar.radio("Select Algorithm Version", ["2017 (Original)", "2023 (Updated)"])
 
-# Nutritional Input Section
+# macros Input Section
 st.header("Enter Nutritional Information (per 100g)")
-energy = st.number_input("Energy (kJ)", min_value=0.0, step=0.1)
-saturated_fat = st.number_input("Saturated Fat (g)", min_value=0.0, step=0.1)
+energy = st.number_input("Energy (kJ)", min_value=0.0, step=20)
+saturated_fat = st.number_input("Saturated Fat (g)", min_value=0.0, step=0.2)
 st.markdown(
     '<p style="color:gray;font-size:small;">Important: Not total fats, SATURATED!.</p>', 
     unsafe_allow_html=True
 )
-sugars = st.number_input("Sugars (g)", min_value=0.0, step=0.1)
+sugars = st.number_input("Sugars (g)", min_value=0.0, step=2)
 st.markdown(
     '<p style="color:gray;font-size:small;">Important: Only pure sugars, not total carbs.</p>', 
     unsafe_allow_html=True
@@ -52,11 +52,11 @@ if algorithm == "2017 (Original)":
 
         unsafe_allow_html=True
     )
-fiber = st.number_input("Fiber (g)", min_value=0.0, step=0.1)
-protein = st.number_input("Protein (g)", min_value=0.0, step=0.1)
+fiber = st.number_input("Fiber (g)", min_value=0.0, step=0.4)
+protein = st.number_input("Protein (g)", min_value=0.0, step=0.4)
 fruits_veg = st.number_input("Fruits, Vegetables, Legumes (%)", min_value=0, max_value=100)
 
-# Helper Functions
+# marking scheme Functions
 
 
 def score_to_letter_and_color2017(score):
@@ -85,7 +85,7 @@ def score_to_letter_and_color2023(score):
     else:
         return "E", "red"
 
-# Calculate Nutri-Score
+# show Nutri-Score
 if st.button("Calculate Nutri-Score"):
     if algorithm == "2017 (Original)":
         score = nutriscore_2017_Master(energy, saturated_fat, sugars, sodium, fiber, protein, fruits_veg)

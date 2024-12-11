@@ -1,4 +1,6 @@
 
+#this stores each points individually. It makes the calculations in algorithms a bit useless now but I realised too late and I am scared to touch anything when it works finally.
+
 
 def energy_points(energy):
     return int(0) if energy <= int(335) else int(1) if energy <= int(670) else int(2) if energy <= int(1005) else int(3) if energy <= int(1340) else int(4) if energy <= int(1675) else int(5) if energy <= int(2010) else int(6) if energy <= int(2345) else int(7) if energy <= int(2680) else int(8) if energy <= int(3015) else int(9) if energy <= int(3350) else int(10)
